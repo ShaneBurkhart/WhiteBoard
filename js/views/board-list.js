@@ -1,16 +1,16 @@
 var app = app || {};
 
-app.UserListView = Backbone.View.extend({
-    id : "user-list-container",
-    tagName : "ul",
-    className : "unstyled list-view",
-
+app.BoardListView = Backbone.View.extend({
     children : {},
+    id : "board-list",
+    tagName : "ul",
+    className : "unstyled",
 
 	initialize: function() {
-        this.collection = new app.UserListCollection();
+        this.collection = new app.BoardListCollection();
         this.collection.fetch();
-        this.listenTo(this.collection, "add", this.render);
+
+        this.listenTo(this.collection, "add", this.renderOne);
         this.listenTo(this.collection, "reset", this.render);
         this.listenTo(this.collection, "change", this.render);
     },
@@ -22,15 +22,13 @@ app.UserListView = Backbone.View.extend({
     },
 
     renderAll : function(){
-    	this.collection.each(function(item){
-    		this.renderOne(item);
-    	}, this);
+    	this.collection.each(this.renderOne, this);
     },
 
     renderOne : function(item){
-    	var userView = new app.UserItemView({
+    	var boardView = new app.BoardItemView({
     		model : item
     	});
-    	this.$el.append(userView.render().el);
+    	this.$el.append(boardView.render().el);
     }
 });

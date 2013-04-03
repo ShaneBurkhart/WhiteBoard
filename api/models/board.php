@@ -1,31 +1,32 @@
 <?php
 
-	class Job_Model extends Model{
+	class Board_Model extends Model{
 
-		public function getJobs(){
+		public function getBoards(){
 			$query = "	SELECT *
-						FROM jobs
+						FROM boards
 						ORDER BY id DESC";
 			$stmt = $this->db->query($query);
 			$p = array();
-			while($row = $stmt->fetch_row()){
-				$p[] = array("id" => $row[0] , "name" => $row[1]);
-			}
+			while($row = $stmt->fetch_row())
+				$p[] = array("id" => $row[0] , "name" => $row[1], "description" => $row[2], "date" => $row[3]);
 			if($stmt)
 				$stmt->close();
 			return $p;
 		}
 
-		public function getJob($id){
+		public function getBoard($id){
 			$query = "	SELECT *
-						FROM jobs
+						FROM boards
 						WHERE id = ?";
 			$stmt = $this->db->prepare($query);
 			$stmt->bind_param("i", $id);
 			$stmt->execute();
-			$stmt->bind_result($id, $name);
-			$stmt->fetch();
-			$p = array("id" => $id , "name" => $name);
+			$stmt->bind_result($id, $name, $desc, $date);
+			if($stmt->fetch())
+				$p = array("id" => $id , "name" => $name, "description" => $desc, "date" => $date);
+			else
+				$p = array();
 			if($stmt)
 				$stmt->close();
 			return $p;
@@ -49,22 +50,22 @@
 			return $p;
 		}
 
-		public function create($job){
-			if($this->getJobID($job))
+		public function create($name, $desc){
+			if($this->getBoardID($name))
 				return 0;
-			$query = "	INSERT INTO jobs(job_name) VALUES (?)";
+			$query = "	INSERT INTO boards(name, description) VALUES (?, ?)";
 			$stmt = $this->db->prepare($query);
-			$stmt->bind_param("s", $job);
+			$stmt->bind_param("ss", $name, $desc);
 			if($stmt->execute())
 				return $this->db->insert_id;
 			else 
 				return 0;
 		}
 
-		public function getJobID($n){
+		public function getBoardID($n){
 			$query = "	SELECT id
-						FROM jobs
-						WHERE job_name = ?";
+						FROM boards
+						WHERE name = ?";
 			$stmt = $this->db->prepare($query);
 			$stmt->bind_param("s", $n);
 			$stmt->execute();

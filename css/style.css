@@ -1,69 +1,74 @@
-form{
-	display:inline-block;
+body{
+	background-color: #ededed;
 }
 
 .header{
 	background-color: black;
 }
 
-#logo h3{
-	color:#dbffe7;
+#logo h4{
+	color:white;
 }
 #logo{
 	text-decoration: none;
 }
 
-.job-name-col{
-}
-
-.user-email-col{
-	width:300px;
-}
-.user-name-col{
-	width:250px;
-}
-
 .jumbotron{
-	background-color:#dbffe7;
-	padding:40px 0;
+	background-color:#0559ff;
+	padding:10px 0;
 	text-align: center;
+	color:white;
 }
 .subhead{
 	text-align: left;
 }
 .subhead h1{
-	font-size: 60px;
+	font-size: 36px;
 	line-height: 1;
 }
-.subhead p{
+
+#board-name{
+	width:400px;
+}
+#board-description{
+	width:600px;
+}
+
+.board{
+	background-color: white;
+	border-radius: 7px;
+	padding:15px;
+	margin: 10px 0;
+}
+.board .name{
+	color: #21a9ff;
+	font-weight: 700;
 	font-size: 20px;
-	line-height: 1.25;
+}
+.board .description{
+	font-size: 14px;
+	color: #646464;
+}
+.board .contributions{
+	font-size: 14px;
+	color: #b5b5b5;
+}
+.board .controls{
+	color: #69caff;
+	margin-left:-5px;
+}
+.board .controls li{
+	
+}
+.board .inflater{
+	cursor: pointer;
 }
 
 .section{
-	padding-top:20px;
+	padding-top:10px;
 }
 
-.job-line{
-	
-	padding:10px 0;
-	vertical-align: bottom;
-}
 
-.list-view{
-
-}
-.list-view > li{
-	border-bottom: thin solid #ddd;
-	padding: 10px;
-}
-.list-view > li:not(#list-types):hover{
-	background-color: #f5f5f5;
-}
-
-.controls{
-	list-style: none;
-}
 
 .no-padding{
 	padding:0 0;

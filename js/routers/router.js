@@ -2,11 +2,8 @@ var app = app || {};
 
 app.Router = Backbone.Router.extend({	
 	routes :{
-		"" : "showJobs",
-		"jobs" : "showJobs",
-		"jobs/:id" : "showEditJob",
-		"users" : "showUsers",
-		"users/share/:id" : "showShareFile",
+		"" : "showBoards",
+		"board/:id" : "showBoard",
 		"*path" : "showError"
 	},
 
@@ -14,23 +11,14 @@ app.Router = Backbone.Router.extend({
 		this.RM = app.RegionManager;
 	},
 
-	showJobs : function(){
-		this.RM.show(new app.JobPageView());
+	showBoards : function(){
+		this.RM.show(new app.BoardPageView());
 	},
 
-	showEditJob : function(id){
-		new app.JobEditView({id : id});
+	showBoard : function(id){
+		this.RM.show(new app.BoardListView());
 	},
-
-	showUsers : function(){
-		this.RM.show(new app.UserPageView());
-	},
-
-	showShareFile : function(id){
-		new app.UserPageView();
-		console.log("asd");
-	},
-
+	
 	showError : function(path){
 		$("#page-container").html("This is not valid");
 	}
