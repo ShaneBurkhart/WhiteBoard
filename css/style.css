@@ -30,7 +30,7 @@ body{
 #board-name{
 	width:400px;
 }
-#board-description{
+#board-description, #contribution-description{
 	width:600px;
 }
 
@@ -62,6 +62,9 @@ body{
 }
 .board .inflater{
 	cursor: pointer;
+}
+.collapsable{
+	margin-top:10px;
 }
 
 .section{

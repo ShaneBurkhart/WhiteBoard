@@ -12,11 +12,11 @@ app.Router = Backbone.Router.extend({
 	},
 
 	showBoards : function(){
-		this.RM.show(new app.BoardPageView());
+		this.RM.show(new app.BoardsPageView());
 	},
 
 	showBoard : function(id){
-		this.RM.show(new app.BoardListView());
+		this.RM.show(new app.BoardPageView({boardId : id}));
 	},
 	
 	showError : function(path){

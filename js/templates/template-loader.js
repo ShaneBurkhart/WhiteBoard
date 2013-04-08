@@ -1,7 +1,7 @@
 var app = app || {};
 
 app.Templates = (function(){
-	var tempNames = ["board-item", "board-page"],
+	var tempNames = ["board-page", "boards-item", "boards-page", "contribution-item", "board"],
 	baseUrl = "js/templates/",
 	temps = {};
 	$.each(tempNames, function(index, name){

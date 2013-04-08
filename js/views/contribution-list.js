@@ -1,13 +1,13 @@
 var app = app || {};
 
-app.BoardListView = Backbone.View.extend({
+app.ContributionListView = Backbone.View.extend({
     children : {},
-    id : "board-list",
+    id : "contribution-list",
     tagName : "ul",
     className : "unstyled",
 
 	initialize: function() {
-        this.collection = new app.BoardListCollection();
+        this.collection = new app.ContributionListCollection({}, {url : "api/contributions/" + this.options.boardId});
         this.collection.fetch();
 
         this.listenTo(this.collection, "add", this.renderOne);
@@ -26,9 +26,9 @@ app.BoardListView = Backbone.View.extend({
     },
 
     renderOne : function(item){
-    	var boardView = new app.BoardItemView({
+    	var contView = new app.ContributionView({
     		model : item
     	});
-    	this.$el.append(boardView.render().el);
+    	this.$el.append(contView.render().el);
     }
 });

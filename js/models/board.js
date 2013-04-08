@@ -1,6 +1,6 @@
 var app = app || {};
 
-app.BoardItemModel = Backbone.Model.extend({
+app.BoardModel = Backbone.Model.extend({
 	defaults : {
 		id : null,
 		name : "Board Name",

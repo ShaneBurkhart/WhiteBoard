@@ -1,9 +1,9 @@
 var app = app || {};
 
-app.BoardItemView = Backbone.View.extend({
+app.ContributionView = Backbone.View.extend({
 	tagName : "li",
 	className : "board",
-	template : _.template(app.Templates["board-item"]),
+	template : _.template(app.Templates["contribution-item"]),
 
 	initialize : function(){
 	},
