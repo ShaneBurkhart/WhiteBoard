@@ -8,6 +8,7 @@ app.BoardPageView = Backbone.View.extend({
 
     initialize: function() {
         this.children.boardContributionListView = new app.ContributionListView({boardId : this.options.boardId});
+        
         this.children.boardView = new app.BoardView({boardId : this.options.boardId});
     },
 
@@ -31,8 +32,16 @@ app.BoardPageView = Backbone.View.extend({
 
     addContribution : function(e){
         e.preventDefault();
-        var boardDesc = $("#contribute-description").val();
-        this.children.boardContributionListView.collection.create({bid : this.id, description : boardDesc, user : "Shane"}, {wait : true});
+        var boardCont = $("#contribution-description").val();
+        var attachments = new Array();
+        $.each($("#attachment-form").find("input"), function(key, item){
+            var val = $(item).val();
+            if(!isNaN(val) && val != "")
+                attachments.push(val);
+        });
+        if(!boardCont)
+            return;
+        this.children.boardContributionListView.collection.create({bid : this.options.boardId, attachments : attachments, description : boardCont, user : "Shane"}, {wait : true});
         this.toggleContribution(e);
         $("#contribution-description").val("");
     },

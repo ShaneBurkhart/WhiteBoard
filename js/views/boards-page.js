@@ -32,7 +32,9 @@ app.BoardsPageView = Backbone.View.extend({
         e.preventDefault();
         var boardName = $("#board-name").val(),
             boardDesc = $("#board-description").val();
-        this.children.boardListView.collection.create({name : boardName, description : boardDesc}, {wait : true});
+        if(!boardName || !boardDesc)
+            return;
+        app.collections.boardsList.create({name : boardName, description : boardDesc}, {wait : true});
         this.toggleAddBoard(e);
         $("#board-name").val("");
         $("#board-description").val("");

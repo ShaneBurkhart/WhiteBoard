@@ -15,7 +15,7 @@
 			return $p;
 		}
 
-		public function getContributionByBoardID($bid){
+		public function getContributionsByBoardID($bid){
 			$query = "	SELECT contributions.id, contributions.board_id, contributions.description, \"Shane\", contributions.date
 						FROM contributions
 						WHERE board_id = ?

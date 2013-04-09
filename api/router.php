@@ -12,6 +12,8 @@
 	}
 	spl_autoload_register('aloader');
 
+	define("SERVER_ROOT", $_SERVER["DOCUMENT_ROOT"]);
+
 	//Boiler Plate include
 	include("nouns/noun.php");
 
@@ -34,6 +36,15 @@
             break; 
     }
 
+    //Init DB after class verification
+	include("config.php");
+	$db = new mysqli($server, $user, $pass, $db_name);
+	if($db->errno){
+		die("Could not connect");
+	}
+	
+	$GLOBALS['db'] = $db;
+
     //Process URI
     $temp = explode("?", $requestURI);
 	$URIParts = explode("/", $temp[0]);
@@ -52,14 +63,6 @@
 		$class = new $className();
 	else
 		die("Class DNE");
-
-	//Init DB after class verification
-	include("config.php");
-	$db = new mysqli($server, $user, $pass, $db_name);
-	if($db->errno){
-		die("Could not connect");
-	}
-	$GLOBALS['db'] = $db;
 
 	//Init the noun
 	$class->setURI($requestURI);

@@ -2,14 +2,15 @@ var app = app || {};
 
 app.ContributionView = Backbone.View.extend({
 	tagName : "li",
-	className : "board",
+	className : "contribution",
 	template : _.template(app.Templates["contribution-item"]),
 
 	initialize : function(){
 	},
 
 	events : {
-        "click .inflater" : "toggleCollapsable"
+        "click .inflater" : "toggleCollapsable",
+        "click .attachments a" : "downloadAttachment"
     },
 
 	getParent : function(e){
@@ -36,6 +37,13 @@ app.ContributionView = Backbone.View.extend({
 		else
 			chevron.attr("class", "inflater icon-chevron-down");
 
+	},
+
+	downloadAttachment : function(e){
+		e.preventDefault();
+		var frame = $("#d-frame"),
+			attachmentID = $(e.target).attr("i");
+		frame.attr("src", "/api/download/" + attachmentID);
 	},
 
 	render : function(){

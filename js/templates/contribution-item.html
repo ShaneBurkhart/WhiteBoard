@@ -1,9 +1,17 @@
 <p class="no-margin"><%= user %></p>
 <p class="no-margin"><%= description %></p>
 <div class="collapsable hidden">
-	<p class="contributions no-margin"><%= date %></p>
+	<p class="date no-margin"><%= date %></p>
+	<% if(typeof(attachments) != "undefined"){ %>
+	<p class="attachments-label no-margin"><%= "Attachments" %></p>
+	<% } %>
+	<ul class="attachments unstyled">
+		<% _.each(attachments, function(item){ %> 
+		<li><a class="no-margin" href="#" i="<%= item["id"] %>"><%= item["filename"] %></a></li> 
+		<% }); %>
+	</ul>
 	<ul class="controls unstyled inline no-margin">
-		<li><a href="#">Report Spam</a></li>
+		<!--<li><a href="#">Report Spam</a></li>!-->
 	</ul>
 </div>
 <i class="inflater icon-chevron-down"></i>

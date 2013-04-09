@@ -3,7 +3,11 @@
 	<div class="collapsable hidden">
 		<p class="no-margin">Contribution</p>
 		<textarea id="contribution-description" placeholder="What are you thinking?"></textarea>
-		<br>
+		<form id="attachment-form" action="api/upload" method="post" target="u-frame" enctype="multipart/form-data">
+			<p class="no-margin">Attach a file</p>
+			<input name="attachment" type="file">
+			<input type="submit">
+		</form>
 		<ul class="unstyled inline">
 			<li><a class="contribute-button btn btn-small btn-primary"href="#">Contribute</a></li>
 			<li><a class="contribute-minimize icon-remove" href="#"></a></li>

@@ -34,11 +34,11 @@ body{
 	width:600px;
 }
 
-.board{
+.board, .contribution{
 	background-color: white;
 	border-radius: 7px;
 	padding:15px;
-	margin: 10px 0;
+	margin: 10px 0 0;
 }
 .board .name{
 	color: #21a9ff;
@@ -49,11 +49,11 @@ body{
 	font-size: 14px;
 	color: #646464;
 }
-.board .contributions{
+.board .contributions, .contribution .date{
 	font-size: 14px;
 	color: #b5b5b5;
 }
-.board .controls{
+.board .controls, .contribution .controls{
 	color: #69caff;
 	margin-left:-5px;
 }
@@ -63,8 +63,16 @@ body{
 .board .inflater{
 	cursor: pointer;
 }
+.contribution .attachments-label{
+	text-decoration: underline;
+}
 .collapsable{
-	margin-top:10px;
+	margin-top:5px;
+}
+
+
+.attachment{
+	color: #21a9ff;
 }
 
 .section{

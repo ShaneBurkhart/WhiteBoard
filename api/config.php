@@ -1,6 +1,6 @@
 <?php 
 //Misc Config Settings
-	$db_name = "white_board";
+	$db_name = "idea_bulb";
 	$user = "shane";
 	$pass = "Java#97Java";
 	$server = "localhost";

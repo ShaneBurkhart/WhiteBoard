@@ -54,14 +54,13 @@
 
 		<script type="text/javascript">
 			/*$.ajax({
-				url : "api/contributions/12",
+				url : "api/contributions/11",
 				type : "post",
 				dataType : "json",
-				success : function(data){console.log(data);},
-				data : JSON.stringify({bid : 11, attachments : ["23"], description : "crap"})
+				success : function(data){console.log(data)},
+				data : JSON.stringify({bid : 11, description : "crap"})
 			});*/
 		</script>
 		<iframe class="hidden" name="u-frame" id="u-frame"></iframe>
-		<iframe class="hidden" name="d-frame" id="d-frame"></iframe>
 	</body>
 </html>

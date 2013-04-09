@@ -6,8 +6,16 @@ app.BoardView = Backbone.View.extend({
 
 	initialize : function(){
 		_.bindAll(this, "render");
-		this.model = new app.BoardModel({}, {url : "api/boards/" + this.options.boardId});
-		this.model.fetch({success : this.render});
+		//Check if collection exists
+		if(app.collections.boardsList)
+			//Get model from collection
+			this.model = app.collections.boardsList.get(this.options.boardId);
+		//If still not found then make.
+		if(!this.model){
+			this.model = new app.BoardModel({}, {url : "api/boards/" + this.options.boardId});
+			this.model.fetch({success : this.render});
+		}else
+			this.render();
 	},
 
 	events : {

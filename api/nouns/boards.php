@@ -10,7 +10,6 @@
 				$this->sendJSON($boardModel->getBoards());
 			else 														//Display board by id
 				$this->sendJSON($boardModel->getBoard($this->data["id"]));
-			
 		}
 
 		function post(){
