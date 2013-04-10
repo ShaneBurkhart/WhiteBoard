@@ -13,7 +13,8 @@
 	spl_autoload_register('aloader');
 
 	define("SERVER_ROOT", $_SERVER["DOCUMENT_ROOT"]);
-
+	define("USER_SESSION_KEY", "USER_KEY");
+	
 	//Boiler Plate include
 	include("nouns/noun.php");
 
@@ -29,7 +30,9 @@
         case 'get':  
             $data = $_GET;  
             break;  
-        case 'post':  
+        case 'post': 
+        	$data = $_POST;
+        	break;
         case 'put': 
         case 'delete':
             $data = json_decode(file_get_contents('php://input'), true);  

@@ -1,0 +1,12 @@
+#ErrorDocument 404 /error?error=Page%20Not%20Found
+
+RewriteEngine On 
+
+RewriteRule ^js - [NC,L]
+RewriteRule ^api - [NC,L]
+RewriteRule ^css - [NC,L]
+RewriteRule ^bootstrap - [NC,L]
+RewriteRule ^_files - [NC,L]
+
+RewriteCond %{REQUEST_URI} !^/(js|api|css|bootstrap|_files)
+RewriteRule ^(.*) site-router.php [NC,L]

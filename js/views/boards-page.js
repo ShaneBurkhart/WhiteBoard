@@ -10,6 +10,10 @@ app.BoardsPageView = Backbone.View.extend({
         this.children.boardListView = new app.BoardsListView();
     },
 
+    onClose : function(){
+        this.children.boardListView.close();
+    },
+
     events : {
         "click .add-board-toggle, .add-board-minimize" : "toggleAddBoard",
         "click .add-board-button" : "addBoard",
