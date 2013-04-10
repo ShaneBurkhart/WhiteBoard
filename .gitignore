@@ -1,4 +1,5 @@
 bin/
+tstamp.txt
 production/
 _files/
 _temp/
