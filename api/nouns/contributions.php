@@ -32,7 +32,10 @@
 						$attachmentModel->saveAttachment($id, $value);
 				}
 			}
-			$this->sendJSON($contributionModel->getContribution($id));
+			$c = $contributionModel->getContribution($id);
+			//Add attachments to array
+			$c["attachments"] = $attachmentModel->getAttachments($c["id"]);
+			$this->sendJSON($c);
 		}
 
 		function put(){
