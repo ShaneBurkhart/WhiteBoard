@@ -1,0 +1,11 @@
+User specific notifications
+	-Each user has specific notification for themselves.  Once read, the notification is gone.
+	-Not miss anything but could be hard to implement.
+
+Time based
+	-If a contribution is recent then say so. 1 day.
+	-Could possibly miss stuff
+
+Have a notification section.  Right side of screen is for notifications.
+	-List recent contributions in the order they happened.  List 50 or so.
+	-

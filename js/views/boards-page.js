@@ -8,6 +8,7 @@ app.BoardsPageView = Backbone.View.extend({
 
     initialize: function() {
         this.children.boardListView = new app.BoardsListView();
+        this.children.notificationsListView = new app.NotificationsListView();
     },
 
     onClose : function(){
@@ -53,7 +54,8 @@ app.BoardsPageView = Backbone.View.extend({
 
     render : function(){
         this.$el.html(this.template());
-        this.$el.append(this.children.boardListView.el);
+        this.$el.find("#boards-container").append(this.children.boardListView.el);
+        this.$el.find("#notifications-container").append(this.children.notificationsListView.render().el);
         return this;
     }
 });

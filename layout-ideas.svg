@@ -14,7 +14,7 @@
    height="1052.36"
    id="svg2"
    version="1.1"
-   inkscape:version="0.48.3.1 r9886"
+   inkscape:version="0.48.4 r9939"
    sodipodi:docname="layout-ideas.svg">
   <defs
      id="defs4">
@@ -74,16 +74,16 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="1.4"
-     inkscape:cx="401.32737"
+     inkscape:zoom="1.06"
+     inkscape:cx="1924.3619"
      inkscape:cy="738.77672"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
-     inkscape:window-width="1366"
-     inkscape:window-height="706"
-     inkscape:window-x="-8"
-     inkscape:window-y="-8"
+     inkscape:window-width="1920"
+     inkscape:window-height="1003"
+     inkscape:window-x="-9"
+     inkscape:window-y="-9"
      inkscape:window-maximized="1" />
   <metadata
      id="metadata7">
@@ -93,7 +93,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -115,7 +115,7 @@
        height="102.14286"
        width="1302.8572"
        id="rect2997"
-       style="fill:#0559ff;fill-opacity:1;stroke:none" />
+       style="fill:#1378df;fill-opacity:1;stroke:none" />
     <rect
        y="-27.280689"
        x="170"

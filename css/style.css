@@ -1,5 +1,5 @@
 body{
-	background-color: #ededed;
+	background-color: #e6e6e6;
 }
 
 .header{
@@ -14,8 +14,8 @@ body{
 }
 
 .jumbotron{
-	background-color:#0559ff;
-	padding:10px 0;
+	background-color:#1378df;
+	padding:3px 0;
 	text-align: center;
 	color:white;
 }
@@ -23,7 +23,7 @@ body{
 	text-align: left;
 }
 .subhead h1{
-	font-size: 36px;
+	font-size: 20px;
 	line-height: 1;
 }
 
@@ -37,21 +37,25 @@ body{
 .board, .contribution{
 	background-color: white;
 	border-radius: 7px;
-	padding:15px;
+	padding:10px;
 	margin: 10px 0 0;
 }
 .board .name{
 	color: #21a9ff;
 	font-weight: 700;
 	font-size: 20px;
+	text-overflow:ellipsis;
+	display:block;
+	white-space:no-wrap;
+	overflow:hidden;
 }
 .board .description{
 	font-size: 14px;
 	color: #646464;
 }
-.board .contributions, .contribution .date{
+.board .contributions, .contribution .date, .notification .date{
 	font-size: 14px;
-	color: #b5b5b5;
+	color: #a5a5a5;
 }
 .board .controls, .contribution .controls{
 	color: #69caff;
@@ -75,10 +79,16 @@ body{
 	color: #21a9ff;
 }
 
-.section{
-	padding-top:10px;
+.notification{
+	padding:7px 0;
+	border-top:thin solid #bbb;
 }
-
+.notification p{
+	text-overflow:ellipsis;
+	display:block;
+	white-space:no-wrap;
+	overflow:hidden;
+}
 
 
 .no-padding{

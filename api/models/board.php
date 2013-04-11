@@ -5,7 +5,7 @@
 		public function getBoards(){
 			$query = "	SELECT *
 						FROM boards
-						ORDER BY id DESC";
+						ORDER BY id ASC";
 			$stmt = $this->db->query($query);
 			$p = array();
 			while($row = $stmt->fetch_row())

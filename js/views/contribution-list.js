@@ -29,7 +29,7 @@ app.ContributionListView = Backbone.View.extend({
     	var contView = new app.ContributionView({
     		model : item
     	});
-    	this.$el.append(contView.render().$el.hide());
+    	this.$el.prepend(contView.render().$el.hide());
         contView.$el.slideDown();
     }
 });

@@ -26,7 +26,6 @@
 		<copy todir="${base.dir}/api">
 			<fileset dir="${proj.dir}/api"/>
 		</copy>
-		<copy file="config.php" tofile="${base.dir}/api/config.php" overwrite="true"/>
 		<copy todir="${base.dir}/bootstrap">
 			<fileset dir="${proj.dir}/bootstrap"/>
 		</copy>
@@ -37,7 +36,11 @@
 			<fileset dir="${proj.dir}/css"/>
 		</copy>
 		<!--Copy all necessary bottom level files-->
+		<copy file="${proj.dir}/login.html" tofile="${base.dir}/login.html"/>
+		<copy file="${proj.dir}/site-router.php" tofile="${base.dir}/site-router.php"/>
+		<copy file="${proj.dir}/.htaccess" tofile="${base.dir}/.htaccess"/>
 		<copy file="index.html" tofile="${base.dir}/index.html"/>
+		<copy file="config.php" tofile="${base.dir}/api/config.php" overwrite="true"/>
 	</target>
 
 	<target name="-concat-js" depends="-init">

@@ -19,6 +19,7 @@
 
 		function post(){
 			$contributionModel = new Contribution_Model();
+			$notificationModel = new Notification_Model();
 			if(!isset($this->data["bid"]) or !isset($this->data["description"]))//Add user later
 				die("No creds"); // send response
 			//Create entry in contributions and get id
@@ -31,6 +32,8 @@
 						//Save each attachment. Adds to table and move/delete temp
 						$attachmentModel->saveAttachment($id, $value);
 				}
+				//Add a notification
+				$notificationModel->create($this->data["bid"], $id);
 			}
 			$c = $contributionModel->getContribution($id);
 			//Add attachments to array

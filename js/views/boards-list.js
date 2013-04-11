@@ -21,10 +21,10 @@ app.BoardsListView = Backbone.View.extend({
         this.render();
 
         app.collections.boardsList.fetch();
-        this.interval = setInterval(function(){
+        /*this.interval = setInterval(function(){
             app.collections.boardsList.fetch();
             console.log("Fetching");
-        }, 10000);
+        }, 10000);*/
         
     },
 
@@ -39,15 +39,21 @@ app.BoardsListView = Backbone.View.extend({
     },
 
     renderOne : function(item){
-        var container = !this.state ? "#left-list" : "#right-list";
+        var container;
+        if(this.state == 0)
+            container = "#left-list";
+        else if(this.state == 1)
+            container = "#middle-list";
+        else if(this.state == 2)
+            container = "#right-list";
     	var boardView = new app.BoardsItemView({
     		model : item
     	});
         boardView.$el.hide();
         boardView.render();
-    	this.$el.find(container).append(boardView.$el);
+    	this.$el.find(container).prepend(boardView.$el);
         boardView.$el.show("fast");
-        this.state = this.state ? 0 : 1;
+        this.state = ++this.state == 3 ? 0 : this.state;
     },
 
     onClose : function(){

@@ -1,25 +1,28 @@
 <?php
 
-	class Contribution_Model extends Model{
+	class Notification_Model extends Model{
 
-		public function getContributions(){
-			$query = "	SELECT contributions.id, contributions.board_id, contributions.description, \"Shane\", contributions.date
-						FROM contributions
-						ORDER BY id ASC";
+		public function getNotifications(){
+			$query = "	SELECT notifications.id, notifications.date, notifications.board_id, notifications.contribution_id, boards.name
+						FROM notifications
+						INNER JOIN boards
+						ON notifications.board_id = boards.id
+						ORDER BY notifications.id ASC
+						LIMIT 20";
 			$stmt = $this->db->query($query);
-			$p = array();
+			$n = array();
 			while($row = $stmt->fetch_row())
-				$p[] = array("id" => $row[0] , "bid" => $row[1], "description" => $row[2], "user" => $row[3], "date" => $row[4]);
+				$n[] = array("id" => $row[0] , "date" => $row[1], "bid" => $row[2], "cid" => $row[3], "board_name" => $row[4]);
 			if($stmt)
 				$stmt->close();
-			return $p;
+			return $n;
 		}
 
 		public function getContributionsByBoardID($bid){
 			$query = "	SELECT contributions.id, contributions.board_id, contributions.description, \"Shane\", contributions.date
 						FROM contributions
 						WHERE board_id = ?
-						ORDER BY id ASC";
+						ORDER BY id DESC";
 			$stmt = $this->db->prepare($query);
 			$stmt->bind_param("i", $bid);
 			$stmt->execute();
@@ -50,28 +53,11 @@
 			return $p;
 		}
 
-		public function getJobsByUser($uid){
-			$query = "	SELECT jobs.id , jobs.job_name
-						FROM jobs
-						INNER JOIN assignments 
-						ON assignments.user_id = ?
-						AND jobs.id = assignments.job_id";
+		public function create($bid, $cid){
+			$query = "	INSERT INTO notifications(board_id, contribution_id)
+						VALUES (?, ?)";
 			$stmt = $this->db->prepare($query);
-			$stmt->bind_param("i", $uid);
-			$stmt->execute();
-			$stmt->bind_result($id, $name);
-			$p = array();
-			while($stmt->fetch())
-				$p[] = array("id" => $id, "name" => $name);
-			if($stmt)
-				$stmt->close();
-			return $p;
-		}
-
-		public function create($bid, $desc, $uid){
-			$query = "	INSERT INTO contributions(board_id, description, user_id) VALUES (?, ?, ?)";
-			$stmt = $this->db->prepare($query);
-			$stmt->bind_param("isi", $bid, $desc, $uid);
+			$stmt->bind_param("ii", $bid, $cid);
 			if($stmt->execute())
 				return $this->db->insert_id;
 			else 

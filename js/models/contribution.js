@@ -7,7 +7,5 @@ app.ContributionModel = Backbone.Model.extend({
 		user : "Shane",
 		description : "Contribution Description",
 		date : "Never"
-	},
-
-	url : "api/contributions"
+	}
 });
