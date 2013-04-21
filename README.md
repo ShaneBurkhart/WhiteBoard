@@ -11,4 +11,4 @@ Future Plans
 * A login system.
 
 #####URL
-[WhiteBoard](https://whiteboard.theplanviewer.com)
+[WhiteBoard](http://whiteboard.theplanviewer.com)
