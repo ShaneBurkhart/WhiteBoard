@@ -16,7 +16,7 @@
 		}
 
 		function post(){
-			if(!isset($this->data["password"]) or !isset($this->data["email"]))
+			if(!isset($_POST["password"]) or !isset($_POST["email"]))
 				die("No creds");
 			$_SESSION[USER_SESSION_KEY] = 1;
 			header("Location: /");
