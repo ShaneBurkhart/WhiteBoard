@@ -20,20 +20,21 @@
 		function post(){
 			$contributionModel = new Contribution_Model();
 			$notificationModel = new Notification_Model();
-			if(!isset($this->data["bid"]) or !isset($this->data["description"]))//Add user later
+			$userModel = new User_Model();
+			if(!isset($this->data["bid"]) or !isset($this->data["description"]) or !isset($this->data["user"]))//Add user later
 				die("No creds"); // send response
 			//Create entry in contributions and get id
-			$id = $contributionModel->create($this->data["bid"], $this->data["description"], 1);// User id
+			$id = $contributionModel->create($this->data["bid"], $this->data["description"], $userModel->getUserID($this->data["user"]));// User id
 			//Save attachment with cid
+			$attachmentModel = new Attachment_Model();
 			if($id){
-				$attachmentModel = new Attachment_Model();
 				if(isset($this->data["attachments"])){
 					foreach($this->data["attachments"] as $value)
 						//Save each attachment. Adds to table and move/delete temp
 						$attachmentModel->saveAttachment($id, $value);
 				}
 				//Add a notification
-				$notificationModel->create($this->data["bid"], $id);
+				$notificationModel->create($this->data["bid"], $id, $this->data["user"]);
 			}
 			$c = $contributionModel->getContribution($id);
 			//Add attachments to array

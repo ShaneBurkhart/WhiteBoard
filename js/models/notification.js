@@ -6,6 +6,7 @@ app.NotificationModel = Backbone.Model.extend({
 		date : "Never",
 		bid : null,
 		cid : null,
-		board_name : "Some Board"
+		board_name : "Some Board",
+		user : "Shane"
 	}
 });

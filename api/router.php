@@ -14,7 +14,10 @@
 
 	define("SERVER_ROOT", $_SERVER["DOCUMENT_ROOT"]);
 	define("USER_SESSION_KEY", "USER_KEY");
-	
+
+	ini_set("log_errors", 1);
+	ini_set("error_log", SERVER_ROOT . "/php-error.log");
+
 	//Boiler Plate include
 	include("nouns/noun.php");
 

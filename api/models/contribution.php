@@ -3,8 +3,10 @@
 	class Contribution_Model extends Model{
 
 		public function getContributions(){
-			$query = "	SELECT contributions.id, contributions.board_id, contributions.description, \"Shane\", contributions.date
+			$query = "	SELECT contributions.id, contributions.board_id, contributions.description, users.name, contributions.date
 						FROM contributions
+						INNER JOIN users
+						ON contributions.user_id = users.id
 						ORDER BY id ASC";
 			$stmt = $this->db->query($query);
 			$p = array();
@@ -16,10 +18,11 @@
 		}
 
 		public function getContributionsByBoardID($bid){
-			$query = "	SELECT contributions.id, contributions.board_id, contributions.description, \"Shane\", contributions.date
+			$query = "	SELECT contributions.id, contributions.board_id, contributions.description, users.name, contributions.date
 						FROM contributions
-						WHERE board_id = ?
-						ORDER BY id ASC";
+						INNER JOIN users
+						ON contributions.user_id = users.id AND contributions.board_id = ?
+						ORDER BY contributions.id ASC";
 			$stmt = $this->db->prepare($query);
 			$stmt->bind_param("i", $bid);
 			$stmt->execute();
@@ -33,9 +36,10 @@
 		}
 
 		public function getContribution($id){
-			$query = "	SELECT contributions.id, contributions.board_id, contributions.description, \"Shane\", contributions.date
+			$query = "	SELECT contributions.id, contributions.board_id, contributions.description, users.name, contributions.date
 						FROM contributions
-						WHERE id = ?";
+						INNER JOIN users
+						ON contributions.user_id = users.id AND contributions.id = ?";
 			$stmt = $this->db->prepare($query);
 			$stmt->bind_param("i", $id);
 			$stmt->execute();

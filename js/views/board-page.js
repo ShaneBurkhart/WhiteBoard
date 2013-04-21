@@ -32,7 +32,8 @@ app.BoardPageView = Backbone.View.extend({
 
     addContribution : function(e){
         e.preventDefault();
-        var boardCont = $("#contribution-description").val();
+        var boardCont = $("#contribution-description").val(),
+            author = $("#contribution-author").val();
         var attachments = new Array();
         $.each($("#attachment-form").find("input"), function(key, item){
             var val = $(item).val();
@@ -41,7 +42,7 @@ app.BoardPageView = Backbone.View.extend({
         });
         if(!boardCont)
             return;
-        this.children.boardContributionListView.collection.create({bid : this.options.boardId, attachments : attachments, description : boardCont, user : "Shane"}, {wait : true});
+        this.children.boardContributionListView.collection.create({bid : this.options.boardId, attachments : attachments, description : boardCont, user : author}, {wait : true});
         this.toggleContribution(e);
         $("#contribution-description").val("");
     },

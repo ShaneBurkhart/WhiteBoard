@@ -1,6 +1,13 @@
 <div class="board">
 	<a class="name contribute-toggle" href="#">+ Make a contribution</a>
 	<div class="collapsable hidden">
+		<p class="no-margin">Who are you?</p>
+			<select id="contribution-author">
+				<option>Shane</option>
+				<option>Ryan</option>
+				<option>Daniel</option>
+				<option>Mike</option>
+			</select>
 		<p class="no-margin">Contribution</p>
 		<textarea id="contribution-description" placeholder="What are you thinking?"></textarea>
 		<form id="attachment-form" action="api/upload" method="post" target="u-frame" enctype="multipart/form-data">
