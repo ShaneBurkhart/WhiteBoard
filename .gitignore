@@ -1,6 +1,7 @@
 bin/
 tstamp.txt
 production/
+build/config.php
 _files/
 _temp/
 .metadata
