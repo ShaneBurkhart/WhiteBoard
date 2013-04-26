@@ -7,7 +7,7 @@
 						FROM notifications
 						INNER JOIN boards
 						ON notifications.board_id = boards.id
-						ORDER BY notifications.id ASC
+						ORDER BY notifications.id DESC
 						LIMIT 20";
 			$stmt = $this->db->query($query);
 			$n = array();
@@ -15,7 +15,7 @@
 				$n[] = array("id" => $row[0] , "date" => $row[1], "bid" => $row[2], "cid" => $row[3], "board_name" => $row[4], "user" => $row[5]);
 			if($stmt)
 				$stmt->close();
-			return $n;
+			return array_reverse($n);
 		}
 
 		public function create($bid, $cid, $user){

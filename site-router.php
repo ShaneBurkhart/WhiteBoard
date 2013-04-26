@@ -14,5 +14,5 @@
 	else
 		//Go to login
 		include(SERVER_ROOT . "/login.html");*/
-	include(SERVER_ROOT . "/index.html");
+	include(SERVER_ROOT . "/index.php");
 ?>
