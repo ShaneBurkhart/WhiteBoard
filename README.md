@@ -1,7 +1,7 @@
 WhiteBoard
 ==========
 
-WhiteBoard is and app that helps keep track of ideas.  Strictly in prototype right now.
+WhiteBoard is an app that helps keep track of ideas.  Strictly in prototype right now.
 
 Currently
 =========
