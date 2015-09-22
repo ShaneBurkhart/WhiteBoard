@@ -14,8 +14,9 @@ app.BoardView = Backbone.View.extend({
 		if(!this.model){
 			this.model = new app.BoardModel({}, {url : "api/boards/" + this.options.boardId});
 			this.model.fetch({success : this.render});
-		}else
+		}else{
 			this.render();
+		}
 	},
 
 	events : {
